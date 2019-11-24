@@ -1,0 +1,62 @@
+--------------------------------------------------------------------------------------------------
+--------------------------------- GIT ------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+Configurar git en mi maquina despues de instalar git bash
+
+1.- Configurar el usuario de github
+	git config --global user.name "rccs09"
+	git config --global user.email rccs09@gmail.com
+2.- Verificar si se configuró:
+	git config --list
+	
+------------------------------------------------------		
+	
+Para subir cambios:
+1.- Verificar cambios que tenemos
+	git status
+	--> saldran en rojo los archivos que no se han agregado al stash
+	
+2.- Agregar los cambios al stash ---> git add archivos , * es para subir todos
+	git add *
+
+3.-	Verificar cambios que tenemos
+	git status
+	---> saldran en verde los archivos agregados al stash
+	
+4.- Agregar los cambios al repositorio local  
+	git commit -m "mensaje del cambio que se esta subiendo"
+	
+5.- Subir los cambios al repositorio remoto
+	git push
+	
+------------------------------------------------------		
+6.- Crear branch remoto:
+	git checkout -b feature/encurso
+	
+7.- Cambiar de branch
+	git checkout master
+
+7.- Borrar un branch
+	git branch -d feature/encurso
+	
+--------------------------------------------------------------------------------------------------
+------------------------------- EJECUCION SPRING-BOOT --------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+mvn spring-boot:run
+
+### En windows
+	mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=debug"
+	
+### En linux
+	mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
+	
+mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=8787 -Dserver.port=9090 -Dpath.to.config.dir=/var/data/my/config/dir"	
+	
+--------------------------------------------------------------------------------------------------
+------------------------------------ POSTGRESQL --------------------------------------------------
+--------------------------------------------------------------------------------------------------
+POSTGRES--->
+
+
+
