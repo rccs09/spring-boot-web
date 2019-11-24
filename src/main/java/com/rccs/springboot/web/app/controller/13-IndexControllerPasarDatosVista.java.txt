@@ -1,0 +1,41 @@
+package com.rccs.springboot.web.app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class IndexControllerPasarDatosVista {
+	
+//	@RequestMapping(value="/index", method = RequestMethod.GET)
+//	@GetMapping(value="/index")
+	@GetMapping({"/index","/", "/home"})
+	public String index(Model model) {
+		model.addAttribute("titulo", "Spring framework");
+		return "index";
+	}
+
+	
+	/* ******************************************** */
+	/*      FORMAS DE PASAR DATOS A LA VISTA        */
+	/* ******************************************** */
+//	@GetMapping({"/index","/", "/home"})
+//	public String index(ModelMap model) {
+//		model.addAttribute("titulo", "Spring framework");
+//		return "index";
+//	}
+	
+//	@GetMapping({"/index","/", "/home"})
+//	public String index(Map<String, Object> map) {
+//		map.put("titulo", "Spring framework con map");
+//		return "index";
+//	}
+	
+//	@GetMapping({"/index","/", "/home"})
+//	public ModelAndView index(ModelAndView mv) {
+//		mv.addObject("titulo", "Spring framework con mv");
+//		mv.setViewName("index");
+//		return mv;
+//	}
+}
