@@ -48,8 +48,14 @@ Para subir cambios:
 --------------------------------------------------------------------------------------------------
 ------------------------------- EJECUCION SPRING-BOOT --------------------------------------------
 --------------------------------------------------------------------------------------------------
+EJECUCION DESDE CONSOLA
+	mvn spring-boot:run
 
-mvn spring-boot:run
+EMPAQUETADO
+	- ir a la raiz del proyecto en la consola (debe estar iniciada como administrador)
+		cd D:\Desarrollo\Repositorios\gitHubRccs09\spring\spring-boot-web
+	- Ejecutar empaquetado (debe estar seteado el JAVA_HOME)	
+		mvnw.cmd package
 
 ### En windows
 	mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=debug"
