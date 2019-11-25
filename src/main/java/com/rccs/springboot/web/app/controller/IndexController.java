@@ -3,6 +3,7 @@ package com.rccs.springboot.web.app.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,18 @@ import com.rccs.springboot.web.app.model.User;
 @RequestMapping("/app")
 public class IndexController {
 	
+	@Value("${text.indexController.index.titulo}")
+	private String textIndex;
+	
+	@Value("${text.indexController.profile.titulo}")
+	private String textProfile;
+	
+	@Value("${text.indexController.list.titulo}")
+	private String textList;
+	
 	@GetMapping({"/index","/", "/home"})
 	public String index(Model model) {
-		model.addAttribute("titulo", "Spring framework");
+		model.addAttribute("titulo", textIndex);
 		return "index";
 	}
 	
@@ -30,7 +40,7 @@ public class IndexController {
 		u.setLastName("Cadena");
 		u.setMail("correo@corre.com");
 		model.addAttribute("user", u);
-		model.addAttribute("titulo", u.getName());
+		model.addAttribute("titulo", textProfile);
 		return "profile";
 	}
 	
@@ -40,7 +50,7 @@ public class IndexController {
 		u.setName("Roberto");
 		u.setLastName("Cadena");
 		u.setMail("correo@corre.com");
-		model.addAttribute("titulo", "lista de usuarios");
+		model.addAttribute("titulo", textList);
 		return "list";
 	}
 

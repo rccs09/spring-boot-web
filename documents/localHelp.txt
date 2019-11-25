@@ -31,7 +31,13 @@ Para subir cambios:
 	
 ------------------------------------------------------		
 6.- Crear branch remoto:
-	git checkout -b feature/encurso
+	- Crear el branch local
+		git checkout -b feature/encurso
+	- Llevarlo al repositorio remoto
+		git push origin feature/encurso
+		
+7.- Listar todos los branch
+	git branch -vv
 	
 7.- Cambiar de branch
 	git checkout master

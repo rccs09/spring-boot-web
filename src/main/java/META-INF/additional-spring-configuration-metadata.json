@@ -1,0 +1,57 @@
+{"properties": [
+  {
+    "name": "text.indexController.index.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.index.titulo'"
+  },
+  {
+    "name": "text.indexController.profile.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.profile.titulo'"
+  },
+  {
+    "name": "text.indexController.profile.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.profile.titulo'"
+  },
+  {
+    "name": "text.indexController.list.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.list.titulo'"
+  },
+  {
+    "name": "text.indexController.index.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.index.titulo'"
+  },
+  {
+    "name": "text.indexController.index.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.index.titulo'"
+  },
+  {
+    "name": "text.indexController.index.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.index.titulo'"
+  },
+  {
+    "name": "text.indexController.index.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.index.titulo'"
+  },
+  {
+    "name": "text.indexController.profile.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.profile.titulo'"
+  },
+  {
+    "name": "text.indexController.profile.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.profile.titulo'"
+  },
+  {
+    "name": "text.indexController.profile.titulo",
+    "type": "java.lang.String",
+    "description": "A description for 'text.indexController.profile.titulo'"
+  }
+]}
