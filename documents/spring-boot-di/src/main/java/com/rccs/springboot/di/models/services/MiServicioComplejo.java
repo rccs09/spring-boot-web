@@ -1,9 +1,6 @@
 package com.rccs.springboot.di.models.services;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
-@Component("miservicioComplejo")
+//@Component("miservicioComplejo")
 public class MiServicioComplejo implements Iservicio{
 
 	@Override

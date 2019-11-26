@@ -7,12 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.rccs.springboot.di.models.services.Iservicio;
-import com.rccs.springboot.di.models.services.MiServicio;
 
 @Controller
 public class IndexController {
 	@Autowired
-	@Qualifier("miservicioSimple")
+	@Qualifier("miservicioComplejo")
 	private Iservicio servicio;
 	
 	@GetMapping({"/", "", "/index"})
