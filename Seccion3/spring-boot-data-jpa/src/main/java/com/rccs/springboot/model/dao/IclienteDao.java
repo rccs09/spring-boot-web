@@ -8,4 +8,6 @@ public interface IclienteDao {
 	List<Cliente> findAll();
 	
 	void save(Cliente cliente);
+	
+	Cliente findById(Long id);
 }
