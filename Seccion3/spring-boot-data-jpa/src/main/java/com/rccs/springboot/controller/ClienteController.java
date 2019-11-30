@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,20 +13,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.rccs.springboot.model.dao.IclienteDao;
 import com.rccs.springboot.model.entity.Cliente;
+import com.rccs.springboot.model.service.IClienteService;
 
 @Controller
 public class ClienteController {
 	
 	@Autowired
-	@Qualifier("clienteDaoJpaImpl")
-	private IclienteDao iclienteDao; 
+	private IClienteService clienteservice; 
 	
 	@RequestMapping(value="/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de clientes");
-		model.addAttribute("clientes", iclienteDao.findAll());
+		model.addAttribute("clientes", clienteservice.findAll());
 		return "listar";
 	}
 	
@@ -46,7 +44,7 @@ public class ClienteController {
 			model.addAttribute("titulo", "Formulario de cliente");
 			return "form";
 		}
-		iclienteDao.save(c);
+		clienteservice.save(c);
 		return "redirect:listar";
 	}
 	 
@@ -54,7 +52,7 @@ public class ClienteController {
 	public String editar(@PathVariable(value="id")Long id, Map<String, Object> model) {
 		Cliente cliente = null;
 		if(id>0) {
-			cliente = iclienteDao.findById(id);
+			cliente = clienteservice.findById(id);
 		}else {
 			return "redirect:listar";
 		}
@@ -67,7 +65,7 @@ public class ClienteController {
 	public String eliminar(@PathVariable(value="id")Long id) {
 		System.out.println("waaaaaaaaaaaaaaaaaaaa");
 		if(id>0) {
-			iclienteDao.delete(id);
+			clienteservice.delete(id);
 		}
 		System.out.println("222222222222222");
 		return "redirect:/listar";
