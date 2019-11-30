@@ -52,7 +52,6 @@ public class ClienteController {
 	 
 	@RequestMapping(value="/form/{id}")
 	public String editar(@PathVariable(value="id")Long id, Map<String, Object> model) {
-		System.out.println("waaaaaaaaaaaaaaaaaaaa");
 		Cliente cliente = null;
 		if(id>0) {
 			cliente = iclienteDao.findById(id);
@@ -64,5 +63,13 @@ public class ClienteController {
 		return "form";
 	}
 	
-	
+	@RequestMapping(value="/eliminar/{id}")
+	public String eliminar(@PathVariable(value="id")Long id) {
+		System.out.println("waaaaaaaaaaaaaaaaaaaa");
+		if(id>0) {
+			iclienteDao.delete(id);
+		}
+		System.out.println("222222222222222");
+		return "redirect:/listar";
+	}
 }

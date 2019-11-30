@@ -41,6 +41,7 @@
 					<th>mail</th>
 					<th>fecha</th>
 					<th>Editar</th>
+					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -51,6 +52,7 @@
 					<td th:text="${cliente.mail}"></td>
 					<td th:text="${cliente.fechaCreacion}"></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/form/} + ${cliente.id}" th:text="'Editar'"></a> </td>
+					<td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${cliente.id}" th:text="'Eliminar'" onclick="return confirm('Esta seguro de eliminar');"></a> </td>
 				</tr>
 						
 			</tbody>
