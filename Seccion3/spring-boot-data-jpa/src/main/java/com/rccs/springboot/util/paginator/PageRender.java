@@ -67,7 +67,7 @@ public class PageRender<T> {
 	}
 	
 	
-	public boolean isFist() {
+	public boolean isFirst() {
 		return page.isFirst();
 	}
 	
@@ -75,11 +75,11 @@ public class PageRender<T> {
 		return page.isLast();
 	}
 	
-	public boolean hasNext() {
+	public boolean isHasNext() {
 		return page.hasNext();
 	}
 	
-	public boolean hasPrevious() {
+	public boolean isHasPrevious() {
 		return page.hasPrevious();
 	}
 }
