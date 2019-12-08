@@ -1,5 +1,6 @@
 package com.rccs.springboot.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -44,6 +45,8 @@ import com.rccs.springboot.util.paginator.PageRender;
 public class ClienteController {
 	private final Logger log = LoggerFactory.getLogger(ClienteController.class);
 	
+	private static final String UPLOADS_FOLDER = "uploads";
+	
 	@Autowired
 	private IClienteService clienteservice; 
 	
@@ -75,6 +78,14 @@ public class ClienteController {
 			return "form";
 		}
 		if(!foto.isEmpty()) {
+			if(c.getId()!=null && c.getId()>0 && c.getFoto()!=null && c.getFoto().length()>0) {
+				Path rootPath = Paths.get(UPLOADS_FOLDER).resolve(c.getFoto()).toAbsolutePath();
+				File archivo = rootPath.toFile();
+				if(archivo.exists() && archivo.canRead()) {
+					archivo.delete();
+				}
+			}
+
 			//generacion de un id para identificar de manera unica a una foto
 			String uniqueFilename= UUID.randomUUID().toString() + "_"+foto.getOriginalFilename();
 					
@@ -89,7 +100,7 @@ public class ClienteController {
 			
 			
 			//directorio absoluto del proyecto
-			Path rootPath = Paths.get("uploads").resolve(uniqueFilename);
+			Path rootPath = Paths.get(UPLOADS_FOLDER).resolve(uniqueFilename);
 			Path rootAbsolutPath = rootPath.toAbsolutePath();
 			log.info("rootPath: "+rootPath);
 			log.info("rootAbsolutPath: "+rootAbsolutPath);
@@ -132,8 +143,16 @@ public class ClienteController {
 	@RequestMapping(value="/eliminar/{id}")
 	public String eliminar(@PathVariable(value="id")Long id, RedirectAttributes flash) {
 		if(id>0) {
+			Cliente cliente = clienteservice.findById(id);
 			clienteservice.delete(id);
 			flash.addFlashAttribute("success", "Cliente eliminado con exito");
+			Path rootPath = Paths.get(UPLOADS_FOLDER).resolve(cliente.getFoto()).toAbsolutePath();
+			File archivo = rootPath.toFile();
+			if(archivo.exists() && archivo.canRead()) {
+				if(archivo.delete()) {
+					flash.addFlashAttribute("info","Foto "+cliente.getFoto()+" eliminada correctamente");
+				}	
+			}
 		}
 		
 		return "redirect:/listar";
@@ -154,7 +173,7 @@ public class ClienteController {
 	
 	@GetMapping(value="/uploads/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
-		Path pathFoto = Paths.get("uploads").resolve(filename).toAbsolutePath();
+		Path pathFoto = Paths.get(UPLOADS_FOLDER).resolve(filename).toAbsolutePath();
 		log.info("pathFoto: "+pathFoto);
 		Resource recurso = null;
 		try {
