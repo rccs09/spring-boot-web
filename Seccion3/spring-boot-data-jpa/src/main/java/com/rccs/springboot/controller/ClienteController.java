@@ -65,8 +65,9 @@ public class ClienteController {
 			return "form";
 		}
 		if(!foto.isEmpty()) {
-			Path directorioRecursos = Paths.get("src//main//resources//static//uploads");
-			String rootPath = directorioRecursos.toFile().getAbsolutePath();
+//			Path directorioRecursos = Paths.get("src//main//resources//static//uploads");
+//			String rootPath = directorioRecursos.toFile().getAbsolutePath();
+			String rootPath = "D://Temp//uploads";
 			try {
 				byte[] bytesFoto = foto.getBytes();
 				Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
@@ -105,7 +106,6 @@ public class ClienteController {
 	
 	@RequestMapping(value="/eliminar/{id}")
 	public String eliminar(@PathVariable(value="id")Long id, RedirectAttributes flash) {
-		System.out.println("waaaaaaaaaaaaaaaaaaaa");
 		if(id>0) {
 			clienteservice.delete(id);
 			flash.addFlashAttribute("success", "Cliente eliminado con exito");
