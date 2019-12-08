@@ -5,9 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,6 +36,7 @@ import com.rccs.springboot.util.paginator.PageRender;
 @Controller
 @SessionAttributes("cliente")
 public class ClienteController {
+	private final Logger log = LoggerFactory.getLogger(ClienteController.class);
 	
 	@Autowired
 	private IClienteService clienteservice; 
@@ -65,14 +69,29 @@ public class ClienteController {
 			return "form";
 		}
 		if(!foto.isEmpty()) {
+			//generacion de un id para identificar de manera unica a una foto
+			String uniqueFilename= UUID.randomUUID().toString() + "_"+foto.getOriginalFilename();
+					
+			
+			// directorio dentro de recursos
 //			Path directorioRecursos = Paths.get("src//main//resources//static//uploads");
 //			String rootPath = directorioRecursos.toFile().getAbsolutePath();
-			String rootPath = "D://Temp//uploads";
+			
+			// directorio fuera del proyecto
+//			String rootPath = "D://Temp//uploads";
+			
+			
+			
+			//directorio absoluto del proyecto
+			Path rootPath = Paths.get("uploads").resolve(uniqueFilename);
+			Path rootAbsolutPath = rootPath.toAbsolutePath();
+			log.info("rootPath: "+rootPath);
+			log.info("rootAbsolutPath: "+rootAbsolutPath);
 			try {
-				byte[] bytesFoto = foto.getBytes();
-				Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
-				Files.write(rutaCompleta, bytesFoto);
-				c.setFoto(foto.getOriginalFilename());
+				
+				Files.copy(foto.getInputStream(), rootAbsolutPath);
+//				c.setFoto(foto.getOriginalFilename());
+				c.setFoto(uniqueFilename);
 				flash.addAttribute("info", "Foto cargada correctamente '"+ foto.getOriginalFilename()+ "'");
 			} catch (IOException e) {
 				e.printStackTrace();
