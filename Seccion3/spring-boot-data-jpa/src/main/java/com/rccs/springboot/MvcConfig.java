@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer{
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
+	/*
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		WebMvcConfigurer.super.addResourceHandlers(registry);
@@ -26,5 +27,5 @@ public class MvcConfig implements WebMvcConfigurer{
 		registry.addResourceHandler("/uploads/**")
 		.addResourceLocations(resourcePath);
 	}
-	
+	*/
 }
