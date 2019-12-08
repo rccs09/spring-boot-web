@@ -43,6 +43,9 @@ public class Cliente implements Serializable {
 	@NotNull
 	private Date fechaCreacion;
 	
+	@Column(name = "foto")
+	private String foto;
+	
 //	@PrePersist
 //	public void prePersist() {
 //		fechaCreacion = new Date();
@@ -86,6 +89,14 @@ public class Cliente implements Serializable {
 
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 }
