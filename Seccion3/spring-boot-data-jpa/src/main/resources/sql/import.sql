@@ -19,3 +19,21 @@ INSERT INTO clientes (id, nombre,apellido, mail, fecha_creacion, foto) values(18
 INSERT INTO clientes (id, nombre,apellido, mail, fecha_creacion, foto) values(19,'Cristina', 'Apellido19', 'cris@gmail.com', '2019-11-23','');
 INSERT INTO clientes (id, nombre,apellido, mail, fecha_creacion, foto) values(20,'Patricia', 'Apellido20', 'paty@gmail.com', '2019-11-24','');
 INSERT INTO clientes (id, nombre,apellido, mail, fecha_creacion, foto) values(21,'Belen', 'Apellido21', 'belen@gmail.com', '2019-11-25','');
+
+INSERT INTO productos (id, nombre,precio, fecha) values(1,'Panasonic pantalla LCD', 150, '2019-11-25');
+INSERT INTO productos (id, nombre,precio, fecha) values(2,'Sony camara digital', 250, '2019-11-25');
+INSERT INTO productos (id, nombre,precio, fecha) values(3,'Apple ipod shuffle', 100, '2019-11-25');
+INSERT INTO productos (id, nombre,precio, fecha) values(4,'Sony notebook z110', 1150, '2019-11-25');
+INSERT INTO productos (id, nombre,precio, fecha) values(5,'Hewlet packard 1520M', 450, '2019-11-25');
+INSERT INTO productos (id, nombre,precio, fecha) values(6,'Biachi bicicleta aro 26', 300, '2019-11-25');
+INSERT INTO productos (id, nombre,precio, fecha) values(7,'Mica comoda 5 cajones', 50, '2019-11-25');
+
+INSERT INTO facturas (id, descripcion, fecha, observacion, cliente_id) values(1,'compra temporal 1', '2019-11-25', 'observacion 1', 1);
+INSERT INTO factura_items (id, cantidad, producto_id, factura_id) values(1,1, 1, 1);
+INSERT INTO factura_items (id, cantidad, producto_id, factura_id) values(2,3, 2, 1);
+INSERT INTO factura_items (id, cantidad, producto_id, factura_id) values(3,2, 3, 1);
+
+INSERT INTO facturas (id, descripcion, fecha, observacion, cliente_id) values(2,'compra dos', '2019-11-25', null, 1);
+INSERT INTO factura_items (id, cantidad, producto_id, factura_id) values(4,3, 7, 2);
+INSERT INTO factura_items (id, cantidad, producto_id, factura_id) values(5,2, 5, 2);
+INSERT INTO factura_items (id, cantidad, producto_id, factura_id) values(6,1, 3, 2);

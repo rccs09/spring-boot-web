@@ -58,7 +58,6 @@ public class ClienteController {
 		model.put("titulo", "Formulario de cliente");
 		Cliente c = new Cliente();
 		model.put("cliente", c);
-
 		return "form";
 	}
 
@@ -88,6 +87,7 @@ public class ClienteController {
 		String mensajeFlash = c.getId() != null ? "Cliente editado con exito" : "Cliente creado con exito";
 
 		clienteservice.save(c);
+		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:listar";
 	}
